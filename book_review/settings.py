@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os 
+from dotenv import load_dotenv
 from mongoengine import connect
 
-
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -88,8 +90,8 @@ WSGI_APPLICATION = 'book_review.wsgi.application'
 #         }
 #     }
 # }
-
-connect('book_review_db', host='mongodb+srv://sakthivel19:Sakthivel-19@cluster0.yfwkf.mongodb.net/book_review_db?retryWrites=true&w=majority')
+MONGO_URI = os.getenv("MONGO_URI", "")
+connect('book_review_db', host=MONGO_URI)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
