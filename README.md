@@ -31,3 +31,24 @@ A RESTful API for managing a collection of books and user reviews, built with Dj
      - docker build -t django-book-api .
 - Run the Docker Container
      - docker-compose up -d
+ 
+## API Endpoints
+- Books API
+     - POST	{base_url}/api/books/	Add a new book
+          - Request
+               - {
+                     "title": "The Alchemist",
+                     "author": "Paulo Coelho",
+                     "publication_year": 1988,
+                     "genre": "Fiction",
+                     "reviews": []
+                 }
+     - GET {base_url}/api/books/	List all books
+     - GET {base_url}/api/books/{id}/	Get book details + reviews
+- Reviews API
+     - POST {base_url}/api/books/{id}/reviews/	Add a review
+          - {
+                "rating": 5,
+                "comment": "An amazing book!"
+            }
+    - GET {base_url}/api/books/{id}/reviews/	Get all reviews
